@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Avis } from './../models/avis';
+import { Component, Input, OnInit } from '@angular/core';
 import { Collegue } from '../models/collegue';
 
 @Component({
@@ -8,15 +9,30 @@ import { Collegue } from '../models/collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  collegue: Collegue = {
+  @Input() collegue: Collegue = {
     pseudo: "Random Female",
-    score: 100,
+    score: 110,
     photoUrl: "https://randomuser.me/api/portraits/women/66.jpg"
   }
 
   constructor() { }
 
   ngOnInit(): void {
+  }
+
+  updateScore(vote: Avis) {
+    switch (vote) {
+      case Avis.AIMER:
+        this.collegue.score++;
+        break;
+
+      case Avis.DETESTER:
+        this.collegue.score--;
+        break;
+    
+      default:
+        break;
+    }
   }
 
 }
