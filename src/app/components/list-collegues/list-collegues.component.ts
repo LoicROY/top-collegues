@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Collegue } from '../models/collegue';
+import { Collegue } from 'src/app/models/collegue';
 
 @Component({
   selector: 'app-list-collegues',

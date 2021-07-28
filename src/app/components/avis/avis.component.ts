@@ -1,5 +1,5 @@
-import { Avis } from './../models/avis';
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Avis } from 'src/app/models/avis';
 
 @Component({
   selector: 'app-avis',

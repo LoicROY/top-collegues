@@ -3,9 +3,9 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { AvisComponent } from './avis/avis.component';
-import { CollegueComponent } from './collegue/collegue.component';
-import { ListColleguesComponent } from './list-collegues/list-collegues.component';
+import { AvisComponent } from './components/avis/avis.component';
+import { CollegueComponent } from './components/collegue/collegue.component';
+import { ListColleguesComponent } from './components/list-collegues/list-collegues.component';
 import { ScorePipe } from './pipes/score.pipe';
 
 @NgModule({

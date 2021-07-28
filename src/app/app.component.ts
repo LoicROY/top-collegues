@@ -1,5 +1,5 @@
+import { DataService } from './services/api.service';
 import { Collegue } from './models/collegue';
-import { collegues } from './models/fictiveData';
 import { Component } from '@angular/core';
 
 @Component({
@@ -9,5 +9,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'top-collegues';
-  collegues: Collegue[] = collegues
+  collegues: Promise<Collegue[]> = this.dataService.listerCollegues();
+
+  constructor(private dataService: DataService) {
+  }
 }
