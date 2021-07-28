@@ -13,16 +13,14 @@ export class DataService {
     return fetch(
       'https://formation-angular-collegues.herokuapp.com/collegues',
       { method: 'GET' }
-    ).then(response => response.json());
+    ).then((response) => response.json());
   }
 
-  // donnerUnAvis(collegue: Collegue, avis: Avis): Promise<Collegue> {
-  //   // ...
-  //   // TODO
-  //   // POST https://formation-angular-collegues.herokuapp.com/votes
-  //   // {
-  //   // "pseudo": "basmor",
-  //   // "avis" : "AIMER"
-  //   // }
-  // }
+  donnerUnAvis(collegue: Collegue, avis: Avis): Promise<Collegue> {
+    return fetch('https://formation-angular-collegues.herokuapp.com/votes', {
+      method: 'POST',
+      body: JSON.stringify({pseudo : collegue.pseudo, avis}),
+      headers: { 'Content-Type': 'application/json' },
+    }).then((response) => response.json());
+  }
 }

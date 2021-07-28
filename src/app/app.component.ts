@@ -10,7 +10,12 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'top-collegues';
   collegues: Promise<Collegue[]> = this.dataService.listerCollegues();
+  
 
   constructor(private dataService: DataService) {
+  }
+
+  refresh(){
+    this.collegues = this.dataService.listerCollegues();
   }
 }

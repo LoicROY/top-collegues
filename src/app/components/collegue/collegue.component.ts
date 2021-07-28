@@ -1,3 +1,4 @@
+import { DataService } from './../../services/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Avis } from 'src/app/models/avis';
 import { Collegue } from 'src/app/models/collegue';
@@ -15,24 +16,13 @@ export class CollegueComponent implements OnInit {
     photo: "https://randomuser.me/api/portraits/women/66.jpg"
   }
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
   updateScore(vote: Avis) {
-    switch (vote) {
-      case Avis.AIMER:
-        this.collegue.score++;
-        break;
-
-      case Avis.DETESTER:
-        this.collegue.score--;
-        break;
-    
-      default:
-        break;
-    }
+    this.dataService.donnerUnAvis(this.collegue, vote);
   }
 
 }
