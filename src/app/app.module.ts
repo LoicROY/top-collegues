@@ -7,6 +7,8 @@ import { AvisComponent } from './components/avis/avis.component';
 import { CollegueComponent } from './components/collegue/collegue.component';
 import { ListColleguesComponent } from './components/list-collegues/list-collegues.component';
 import { ScorePipe } from './pipes/score.pipe';
+import { HistoriqueVotesComponent } from './components/historique-votes/historique-votes.component';
+import { VoteComponent } from './components/vote/vote.component';
 
 @NgModule({
   declarations: [
@@ -14,7 +16,9 @@ import { ScorePipe } from './pipes/score.pipe';
     AvisComponent,
     CollegueComponent,
     ListColleguesComponent,
-    ScorePipe
+    ScorePipe,
+    HistoriqueVotesComponent,
+    VoteComponent
   ],
   imports: [
     BrowserModule,

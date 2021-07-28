@@ -1,7 +1,7 @@
-import { collegues } from './../models/fictiveData';
 import { Collegue } from './../models/collegue';
 import { Injectable } from '@angular/core';
 import { Avis } from '../models/avis';
+import { Vote } from '../models/vote';
 
 @Injectable({
   providedIn: 'root',
@@ -23,4 +23,11 @@ export class DataService {
       headers: { 'Content-Type': 'application/json' },
     }).then((response) => response.json());
   }
+
+  listerVotes(): Promise<Vote[]> {
+    return fetch(
+      'https://formation-angular-collegues.herokuapp.com/votes',
+      { method: 'GET' }
+    ).then((response) => response.json());
+    }
 }

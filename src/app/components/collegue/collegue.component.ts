@@ -1,3 +1,4 @@
+import { collegues } from './../../models/fictiveData';
 import { DataService } from './../../services/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Avis } from 'src/app/models/avis';
@@ -10,11 +11,7 @@ import { Collegue } from 'src/app/models/collegue';
 })
 export class CollegueComponent implements OnInit {
 
-  @Input() collegue: Collegue = {
-    pseudo: "Random Female",
-    score: 110,
-    photo: "https://randomuser.me/api/portraits/women/66.jpg"
-  }
+  @Input() collegue: Collegue = collegues[0];
 
   constructor(private dataService: DataService) { }
 

@@ -1,11 +1,28 @@
 <h1>Hello world</h1>
 <h2>Welcome to my app</h2>
 
+<h2>Liste des collegues</h2>
+
 <button class="btn btn-primary" (click)="refresh()">Refresh</button>
 
-<ng-container *ngIf="collegues | async as collegues; else fail">
-    <app-list-collegues class="card-group justify-content-around" [collegues]="collegues"></app-list-collegues>
+<ng-container *ngIf="collegues | async as collegues; else upload">
+  <app-list-collegues
+    class="card-deck justify-content-around"
+    [collegues]="collegues"
+  ></app-list-collegues>
 </ng-container>
-<ng-template #fail>
-    <p>upload ...</p>
+<ng-template #upload>
+  <p>upload ...</p>
+</ng-template>
+
+<h2>Historique des votes</h2>
+
+<ng-container *ngIf="historiqueVote | async as votes; else uploadVotes">
+  <app-historique-votes
+    class="card-deck justify-content-around"
+    [votes]="votes"
+  ></app-historique-votes>
+</ng-container>
+<ng-template #uploadVotes>
+  <p>upload votes...</p>
 </ng-template>
