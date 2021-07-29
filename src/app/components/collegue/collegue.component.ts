@@ -21,7 +21,7 @@ export class CollegueComponent implements OnInit {
 
   updateScore(vote: Avis) {
     this.dataService.donnerUnAvis(this.collegue, vote)
-    .subscribe();
+    .subscribe(collegue => this.collegue = collegue);
   }
 
 }
