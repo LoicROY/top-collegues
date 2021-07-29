@@ -3,6 +3,7 @@ import { DataService } from './../../services/api.service';
 import { Component, Input, OnInit } from '@angular/core';
 import { Avis } from 'src/app/models/avis';
 import { Collegue } from 'src/app/models/collegue';
+import { publishFacade } from '@angular/compiler';
 
 @Component({
   selector: 'app-collegue',
@@ -19,7 +20,8 @@ export class CollegueComponent implements OnInit {
   }
 
   updateScore(vote: Avis) {
-    this.dataService.donnerUnAvis(this.collegue, vote);
+    this.dataService.donnerUnAvis(this.collegue, vote)
+    .subscribe();
   }
 
 }

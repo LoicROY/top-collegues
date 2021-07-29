@@ -2,6 +2,7 @@ import { DataService } from './services/api.service';
 import { Collegue } from './models/collegue';
 import { Component } from '@angular/core';
 import { Vote } from './models/vote';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -10,14 +11,15 @@ import { Vote } from './models/vote';
 })
 export class AppComponent {
   title = 'top-collegues';
-  collegues: Promise<Collegue[]> = this.dataService.listerCollegues();
-  historiqueVote: Promise<Vote[]> = this.dataService.listerVotes();
+  collegues: Observable<Collegue[]> = this.dataService.listerCollegues();
+  historiqueVote: Observable<Vote[]> = this.dataService.historique;
 
   constructor(private dataService: DataService) {
+    this.dataService.listerVotes();
   }
 
   refresh(){
     this.collegues = this.dataService.listerCollegues();
-    this.historiqueVote = this.dataService.listerVotes();
+    this.dataService.listerVotes();
   }
 }
