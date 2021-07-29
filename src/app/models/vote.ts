@@ -3,5 +3,6 @@ import { Collegue } from 'src/app/models/collegue';
 
 export interface Vote {
     collegue: Collegue,
-    avis: Avis
+    avis: Avis,
+    score: number
 }

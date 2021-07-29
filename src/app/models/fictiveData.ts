@@ -55,5 +55,6 @@ export const collegues = [
 
 export const vote = {
   collegue: collegues[0],
-  avis: Avis.AIMER
+  avis: Avis.AIMER,
+  score: 0
 }

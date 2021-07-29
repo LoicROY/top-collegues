@@ -1,15 +1,18 @@
 <div class="card text-center" style="width: fit-content; margin: 5px 10px">
-    <div class="card-header">
-      <img
-        class="card-img-top"
-        style="width: 10rem"
-        [src]="vote.collegue.photo"
-        alt="userPhoto"
-      />
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">{{ vote.collegue.pseudo | uppercase }}</h5>
-      <p class="card-text">{{ vote.collegue.pseudo }} est {{ vote.avis | lowercase }} son score est désormais de {{ vote.collegue.score }}</p>
-      <button class="btn btn-secondary" (click)="delete()">supprimer</button>
-    </div>
+  <div class="card-header">
+    <img
+      class="card-img-top"
+      style="width: 10rem"
+      [src]="vote.collegue.photo"
+      alt="userPhoto"
+    />
   </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ vote.collegue.pseudo | uppercase }}</h5>
+    <p class="card-text">
+      {{ vote.collegue.pseudo }} est {{ vote.avis | lowercase }} son score est
+      désormais de {{ vote.score }}
+    </p>
+    <button class="btn btn-secondary" (click)="delete()">supprimer</button>
+  </div>
+</div>
