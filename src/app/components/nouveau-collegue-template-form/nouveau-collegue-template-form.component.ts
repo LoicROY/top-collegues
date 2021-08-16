@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Collegue } from './../../models/collegue';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from './../../services/api.service';
@@ -17,11 +18,12 @@ export class NouveauCollegueTemplateFormComponent implements OnInit {
     prenom: '',
   };
 
-  constructor(private dataService: DataService) {}
+  constructor(private dataService: DataService, private router: Router) {}
 
   ngOnInit(): void {}
 
   create() {
-    this.dataService.createCollegue(this.collegue);    
+    this.dataService.createCollegue(this.collegue);
+    this.router.navigateByUrl('');
   }
 }

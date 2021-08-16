@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { of } from 'rxjs';
 import { catchError, map } from 'rxjs/operators';
 import { DataService } from 'src/app/services/api.service';
@@ -29,7 +30,7 @@ export class NouveauCollegueReactiveFormComponent implements OnInit {
     validators: (control) => control.value.nom != control.value.prenom ? null : { nomPrenomIdentique : true }
   })
 
-  constructor(private dataService: DataService, private fb: FormBuilder) { }
+  constructor(private dataService: DataService, private fb: FormBuilder, private router: Router) { }
 
   ngOnInit(): void {
     
@@ -37,6 +38,7 @@ export class NouveauCollegueReactiveFormComponent implements OnInit {
 
   create() {
     this.dataService.createCollegue(this.formulaireCollegue.value);
+    this.router.navigateByUrl('');
   }
 
   get isPseudoInvalid() {
