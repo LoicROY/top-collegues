@@ -1,0 +1,27 @@
+<h2>Liste des collegues</h2>
+
+<button class="btn btn-primary" (click)="refresh()">Refresh</button>
+
+<ng-container *ngIf="collegues | async as collegues; else upload">
+  <app-list-collegues
+    class="card-deck justify-content-around"
+    [collegues]="collegues"
+  ></app-list-collegues>
+</ng-container>
+<ng-template #upload>
+  <p>upload ...</p>
+</ng-template>
+
+<hr>
+
+<h2>Historique des votes</h2>
+
+<ng-container *ngIf="historiqueVote | async as votes; else uploadVotes">
+  <app-historique-votes
+    class="card-deck justify-content-around"
+    [votes]="votes"
+  ></app-historique-votes>
+</ng-container>
+<ng-template #uploadVotes>
+  <p>upload votes...</p>
+</ng-template>

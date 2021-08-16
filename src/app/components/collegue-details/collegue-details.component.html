@@ -1,0 +1,17 @@
+<div *ngIf="collegue; else upload" class="card text-center" style="width: fit-content; margin: 5px 10px">
+  <div class="card-header">
+    <img
+      class="card-img-top"
+      style="width: 10rem"
+      [src]="collegue.photo"
+      alt="userPhoto"
+    />
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ collegue.pseudo | uppercase }}</h5>
+    <p class="card-text">{{ collegue.score | score }}</p>
+  </div>
+</div>
+<ng-template #upload>
+  <p>upload ...</p>
+</ng-template>

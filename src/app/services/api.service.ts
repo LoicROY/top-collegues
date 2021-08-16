@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
-import { Collegue } from './../models/collegue';
 import { Injectable } from '@angular/core';
+import { Collegue } from './../models/collegue';
 import { Avis } from '../models/avis';
 import { Vote } from '../models/vote';
 import { Observable, Subject } from 'rxjs';
@@ -15,28 +15,6 @@ export class DataService {
 
   constructor(private http: HttpClient) {}
 
-  // listerCollegues(): Promise<Collegue[]> {
-  //   return fetch(
-  //     'https://formation-angular-collegues.herokuapp.com/collegues',
-  //     { method: 'GET' }
-  //   ).then((response) => response.json());
-  // }
-
-  // donnerUnAvis(collegue: Collegue, avis: Avis): Promise<Collegue> {
-  //   return fetch('https://formation-angular-collegues.herokuapp.com/votes', {
-  //     method: 'POST',
-  //     body: JSON.stringify({pseudo : collegue.pseudo, avis}),
-  //     headers: { 'Content-Type': 'application/json' },
-  //   }).then((response) => response.json());
-  // }
-
-  // listerVotes(): Promise<Vote[]> {
-  //   return fetch(
-  //     'https://formation-angular-collegues.herokuapp.com/votes',
-  //     { method: 'GET' }
-  //   ).then((response) => response.json());
-  //   }
-
   listerCollegues(): Observable<Collegue[]> {
     return this.http.get<Collegue[]>('https://formation-angular-collegues.herokuapp.com/collegues')
   }
@@ -50,10 +28,6 @@ export class DataService {
     )
   }
 
-  // listerVotes(): Observable<Vote[]> {
-  //   return this.http.get<Vote[]>('https://formation-angular-collegues.herokuapp.com/votes')
-  // }
-
   listerVotes(): void {
     this.http.get<Vote[]>('https://formation-angular-collegues.herokuapp.com/votes')
     .subscribe((votes: Vote[]) => this.publishHistorique(votes));
@@ -65,5 +39,18 @@ export class DataService {
 
   get historique(){
     return this.subjectHistoriqueVote.asObservable();
+  }
+
+  createCollegue(collegue: Collegue): void {
+    fetch('https://formation-angular-collegues.herokuapp.com/collegues', {
+      method: 'POST',
+      body: JSON.stringify(collegue),
+      headers: { 'Content-Type': 'application/json' },
+    })
+    .then((response) => response.json());
+  }
+
+  getPseudo(pseudo: string): Observable<Collegue> {
+    return this.http.get<Collegue>(`https://formation-angular-collegues.herokuapp.com/collegues/${pseudo}`)
   }
 }

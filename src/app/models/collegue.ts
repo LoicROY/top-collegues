@@ -1,5 +1,7 @@
 export interface Collegue {
   pseudo: string,
   score: number,
-  photo: string
+  photo: string,
+  nom?: string,
+  prenom?: string
 }
